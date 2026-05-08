@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Octarine';
+  src: url('/fonts/Octarine-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Octarine-Light';
+  src: url('/fonts/Octarine-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  body {
+    @apply font-dm text-lfg-black bg-lfg-cream antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-octarine lowercase;
+  }
+}
+
+@layer components {
+  .brand-motif {
+    background: repeating-linear-gradient(
+      to right,
+      #FE5500 0px,
+      #FE5500 40%,
+      #79CAC4 40%,
+      #79CAC4 60%,
+      #EE9944 60%,
+      #EE9944 100%
+    );
+    height: 4px;
+  }
+
+  .brand-motif-thick {
+    background: repeating-linear-gradient(
+      to right,
+      #FE5500 0px,
+      #FE5500 40%,
+      #79CAC4 40%,
+      #79CAC4 60%,
+      #EE9944 60%,
+      #EE9944 100%
+    );
+    height: 8px;
+  }
+
+  .stat-pill {
+    @apply bg-white border-2 border-lfg-black px-4 py-2 inline-flex items-center gap-2 font-dm;
+  }
+
+  .option-btn {
+    @apply w-full text-left bg-white border-2 border-lfg-black px-5 py-4 font-dm font-medium
+           transition-all duration-150 cursor-pointer
+           hover:bg-lfg-cream hover:shadow-[4px_4px_0_0_#FE5500]
+           focus:outline-none focus:shadow-[4px_4px_0_0_#FE5500];
+  }
+
+  .option-btn[data-state="correct"] {
+    @apply bg-lfg-blue text-lfg-black border-lfg-black cursor-default;
+  }
+
+  .option-btn[data-state="wrong"] {
+    @apply bg-lfg-orange text-white border-lfg-black cursor-default;
+  }
+
+  .option-btn[data-state="dim"] {
+    @apply opacity-60 cursor-default hover:shadow-none hover:bg-white;
+  }
+
+  .option-btn[disabled] {
+    @apply cursor-default;
+  }
+
+  .btn-primary {
+    @apply bg-lfg-orange text-white font-dm font-bold px-6 py-3
+           hover:bg-lfg-black transition-colors duration-200
+           border-2 border-lfg-black;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-lfg-black font-dm font-bold px-5 py-2
+           border-2 border-lfg-black hover:bg-lfg-cream
+           transition-colors duration-200;
+  }
+
+  .case-card {
+    @apply bg-white border-2 border-lfg-black;
+  }
+
+  .countdown-bar {
+    @apply h-1 bg-lfg-orange origin-left;
+    animation: countdown var(--ms, 2200ms) linear forwards;
+  }
+}
+
+@keyframes countdown {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
